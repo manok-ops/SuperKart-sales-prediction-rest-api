@@ -4,13 +4,14 @@ services:
     container_name: SuperKart-backend
     ports:
       - "7860:7860"
+
     healthcheck:
       test:
         [
           "CMD",
           "python",
           "-c",
-          "import urllib.request; urllib.request.urlopen('http://localhost:7860/health')",
+          "import urllib.request; urllib.request.urlopen('http://localhost:7860/health')"
         ]
       interval: 10s
       timeout: 5s
@@ -20,10 +21,13 @@ services:
   frontend:
     build: ./frontend
     container_name: SuperKart-frontend
+
     environment:
-      BACKEND_URL: http://backend:7860
+      BACKEND_URL: "http://SuperKart-backend:7860"
+
     ports:
       - "8501:8501"
+
     depends_on:
       backend:
         condition: service_healthy
