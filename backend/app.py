@@ -15,7 +15,13 @@ model = joblib.load("superkart_model.joblib")
 @superkart_api.get('/')
 def home():
     return "Welcome to the SuperKart System"
-
+# Health check endpoint used by Docker
+@superkart_api.get('/health')
+def health():
+    return jsonify({
+        "status": "healthy",
+        "message": "SuperKart API is running"
+    })
 # Define an endpoint to predict sales for a single product
 @superkart_api.post('/v1/predict')
 def predict_sales():
