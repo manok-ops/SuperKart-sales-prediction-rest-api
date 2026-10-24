@@ -56,6 +56,8 @@ with single_tab:
             result = response.json()
             predicted_sales = result["Sales"]
             st.success(f"Predicted Product Store Sales Total: ₹{predicted_sales:,.2f}")
+            # 🎈 Show balloons
+            st.balloons()
         except requests.RequestException as error:
             message = "The prediction service is unavailable."
             if error.response is not None:
