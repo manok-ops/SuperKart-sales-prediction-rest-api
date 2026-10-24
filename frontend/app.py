@@ -97,12 +97,21 @@ with st.sidebar:
     st.header("Container status")
 
     try:
-        response = requests.get(f"{BACKEND_URL}/health",timeout=3)
-        response.raise_for_status()
-        health = response.json()
-        st.success(
-            f"Backend: {health.get('status', 'unknown')}"
+        response = requests.get(
+            f"{BACKEND_URL}/health",
+            timeout=3
         )
-    except (requests.RequestException, KeyError, ValueError):
-        st.error("Backend: unavailable")
-    st.code(BACKEND_URL, language=None)
+
+        st.write("Status Code:", response.status_code)
+        st.write("Response:", response.text)
+
+        response.raise_for_status()
+
+        health = response.json()
+
+        st.success(f"Backend: {health['status']}")
+
+    except Exception as e:
+        st.error(str(e))
+
+    st.code(BACKEND_URL)
