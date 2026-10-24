@@ -1,7 +1,7 @@
 services:
   backend:
     build: ./backend
-    container_name: SuperKart-backend
+    
 
     ports:
       - "7860:7860"
@@ -21,10 +21,10 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: SuperKart-frontend
+    
 
     environment:
-      BACKEND_URL: "http://SuperKart-backend:7860"
+      BACKEND_URL: "http://backend:7860"
 
     ports:
       - "8501:8501"
