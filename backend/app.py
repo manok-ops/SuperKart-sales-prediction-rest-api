@@ -1,36 +1,26 @@
-# ==========================================
+
 # Import Required Libraries
-# ==========================================
 
 import joblib
 import pandas as pd
 
 from flask import Flask, jsonify, request
 
-# ==========================================
 # Initialize Flask Application
-# ==========================================
 
 superkart_api = Flask("SuperKart")
 
-# ==========================================
 # Load Trained Model
-# ==========================================
 
 model = joblib.load("superkart_model.joblib")
 
-# ==========================================
 # Home Endpoint
-# ==========================================
 
 @superkart_api.get("/")
 def home():
     return "Welcome to the SuperKart System"
 
-
-# ==========================================
 # Health Check Endpoint
-# ==========================================
 
 @superkart_api.get("/health")
 def health():
@@ -41,10 +31,7 @@ def health():
         }
     ), 200
 
-
-# ==========================================
 # Single Prediction Endpoint
-# ==========================================
 
 @superkart_api.post("/v1/predict")
 def predict_sales():
@@ -93,9 +80,7 @@ def predict_sales():
         ), 500
 
 
-# ==========================================
 # Batch Prediction Endpoint
-# ==========================================
 
 @superkart_api.post("/v1/predictbatch")
 def predict_sales_batch():
@@ -132,9 +117,8 @@ def predict_sales_batch():
         ), 500
 
 
-# ==========================================
 # Run Flask Application
-# ==========================================
+
 
 if __name__ == "__main__":
     superkart_api.run(
