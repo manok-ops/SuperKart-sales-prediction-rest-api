@@ -4,7 +4,7 @@ import requests
 import streamlit as st
 
 
-BACKEND_URL = os.getenv("BACKEND_URL", "http://backend:7860").rstrip("/")
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:7860")
 
 st.set_page_config(page_title="SuperKart Sales Price Prediction", page_icon="🏠")
 st.title("🏠 SuperKart Sales Price Prediction")
