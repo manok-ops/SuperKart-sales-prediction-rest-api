@@ -5,8 +5,8 @@ import streamlit as st
 
 BACKEND_URL = os.getenv("BACKEND_URL", "http://backend:7860")
 
-st.set_page_config(page_title="SuperKart Sales Price Forecast", page_icon="🏠")
-st.title("🏠 SuperKart Sales Price Forecast")
+st.set_page_config(page_title="SuperKart Sales Price Forecast")
+st.title("SuperKart Sales Price Forecast")
 st.caption("Streamlit frontend → Flask API → Tuned model")
 
 single_tab, batch_tab = st.tabs(["Single prediction", "Batch prediction"])
